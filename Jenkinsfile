@@ -12,7 +12,11 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/malekjendoubi21/devops.git'
             }
         }
-
+    stage('Compile Stage') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
      
         
     }
