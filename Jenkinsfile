@@ -15,10 +15,10 @@ pipeline {
         stage('Compile Stage') {
             steps {
                 // For Linux or Unix-based agents
-                sh 'mvn clean compile'
+              //  sh 'mvn clean compile'
 
                 // For Windows-based agents (use only one of these, depending on your environment)
-                // bat 'mvn clean compile'
+                 bat 'mvn clean compile'
             }
         }
     }
