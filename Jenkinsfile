@@ -18,5 +18,18 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
+
+        stage('Build & Test') {
+            steps {
+                sh 'mvn package'
+                sh 'mvn test'
+            }
+        }
+    }
+
+    post {
+        failure {
+            echo 'Le build a échoué!'
+        }
     }
 }
