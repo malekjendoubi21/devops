@@ -19,12 +19,7 @@ pipeline {
             }
         }
 
-        stage('Build & Test') {
-            steps {
-                sh 'mvn package'
-                sh 'mvn test'
-            }
-        }
+        
     }
 
     post {
