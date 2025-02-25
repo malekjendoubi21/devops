@@ -29,13 +29,13 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'nexus', usernameVariable: 'NEXUS_USER', passwordVariable: 'NEXUS_PASS')]) {
                         sh """
-                           mvn deploy:deploy-file \
-                           -Dfile=timesheet-devops-1.0.jar \
-                           -Durl=http://192.168.56.10:8081/repository/maven-releases/ \
-                            -DrepositoryId=nexus \
-                          -DgroupId=tn.esprit.spring.services \
-                           -DartifactId=timesheet-devops \
-                           -Dversion=1.0
+                          mvn clean package deploy:deploy-file \
+    -Dfile=target/timesheet-devops-1.0.jar \
+    -Durl=http://192.168.56.10:8081/repository/maven-releases/ \
+    -DrepositoryId=nexus \
+    -DgroupId=tn.esprit.spring.services \
+    -DartifactId=timesheet-devops \
+    -Dversion=1.0
 
                         """
                     }
