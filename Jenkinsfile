@@ -32,6 +32,7 @@ pipeline {
                                             -DrepositoryId=nexus \
                                             -Dnexus.username=${NEXUS_USER} \
                                             -Dnexus.password=${NEXUS_PASS}
+
                                  """
                              }
                          }
