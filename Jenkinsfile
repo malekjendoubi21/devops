@@ -24,20 +24,12 @@ pipeline {
             }
         }
 
-        stage('Deploy to Nexus') {
+         stage('Deploy to Nexus') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'nexus', usernameVariable: 'NEXUS_USER', passwordVariable: 'NEXUS_PASS')]) {
-                        sh """
-                          mvn clean package deploy -DrepositoryId=${NEXUS_REPO_ID} \
-                            -Durl=${NEXUS_URL} \
-                            -Dusername=${NEXUS_USER} \
-                            -Dpassword=${NEXUS_PASS} \
-                            -DgroupId=tn.esprit.spring.services \
-                            -DartifactId=timesheet-devops \
-                            -Dversion=1.0
-                        """
-                    }
+                    sh """
+                    mvn deploy -DaltDeploymentRepository=deploymentRepo::default::http://192.168.56.10:8081//repository/maven-releases/
+                    """
                 }
             }
         }
